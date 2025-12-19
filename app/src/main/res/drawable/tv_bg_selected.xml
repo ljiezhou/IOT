@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <!-- White base so background looks white in both states -->
+    <solid android:color="@color/white" />
+
+    <!-- Rounded corners -->
+    <corners android:radius="8dp" />
+
+    <!-- Slightly stronger stroke for selected state -->
+    <stroke android:width="2dp" android:color="#33000000" />
+
+    <!-- Comfortable internal padding so touch target is larger -->
+    <padding android:left="12dp" android:top="12dp" android:right="12dp" android:bottom="12dp" />
+</shape>

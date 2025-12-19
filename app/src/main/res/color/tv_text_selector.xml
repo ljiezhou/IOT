@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Pressed: slightly dimmed to show feedback -->
+    <item android:state_pressed="true" android:color="@color/white" />
+    <!-- Activated: strong black for contrast on white background -->
+    <item android:state_activated="true" android:color="@color/white" />
+    <!-- Default: standard black -->
+    <item android:color="@color/white" />
+</selector>
+

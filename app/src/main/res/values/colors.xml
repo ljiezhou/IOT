@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="circle_color1">#1E90FF</color>
+    <color name="circle_color2">#4A6572</color>
+    <!--    role-btn w-[240px] h-[240px] rounded-full border-4 border-[#1E90FF] flex flex-col items-center justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#4A6572]-->
+
+    <color name="line_color">#33FFFFFF</color>
+</resources>

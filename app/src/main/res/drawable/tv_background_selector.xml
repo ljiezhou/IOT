@@ -1,0 +1,15 @@
+<!-- tv_background_selector.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 选中状态 -->
+    <item android:state_selected="true"
+        android:drawable="@drawable/main_selected_bg" />
+
+    <!-- 按下状态（可选） -->
+    <item android:state_pressed="true"
+        android:drawable="@drawable/main_selected_bg" />
+
+    <!-- 默认 -->
+    <item android:drawable="@drawable/main_unselected_bg" />
+
+</selector>
