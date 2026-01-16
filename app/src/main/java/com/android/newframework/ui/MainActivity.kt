@@ -3,6 +3,8 @@ package com.android.newframework.ui
 import android.view.LayoutInflater
 import com.android.newframework.AppState
 import com.android.newframework.databinding.ActivityMainBinding
+import com.android.newframework.ui.client.ClientActivity
+import com.android.newframework.ui.host.HostActivity
 import com.blankj.utilcode.util.ToastUtils
 import com.iot.base.BaseActivity
 
@@ -27,6 +29,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             binding.clientTv.isSelected = true
             binding.hostTv.isSelected = false
             AppState.isHost = false
+            if (AppState.isHost == false) {
+                ClientActivity.action(this)
+            }
         }
         binding.confirmTv.setOnClickListener {
             if (AppState.isHost == null) {

@@ -11,6 +11,10 @@ activity = "1.8.0"
 constraintlayout = "2.1.4"
 baseRecyclerViewAdapterHelper = "4.3.2"
 utilcodex = "1.31.1"
+#nettyAll = "4.1.130.Final"
+nettyAll = "5.0.0.Alpha2"
+lifecycle = "2.6.1"
+kotlinxCoroutinesAndroid = "1.7.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -22,6 +26,12 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 baseRecyclerViewAdapterHelper = { group = "io.github.cymchad", name = "BaseRecyclerViewAdapterHelper4", version.ref = "baseRecyclerViewAdapterHelper" }
+
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+
+netty-all = { group = "io.netty", name = "netty-all", version.ref = "nettyAll" }
 
 utilcodex = { group = "com.blankj", name = "utilcodex", version.ref = "utilcodex" }
 [plugins]

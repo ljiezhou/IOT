@@ -5,27 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- 标题 -->
     <TextView
         android:id="@+id/title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_10"
-        android:text="主机模式"
+        android:text="从机模式"
         android:textColor="#CBFFFFFF"
         android:textSize="@dimen/sp_16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- 状态 -->
     <TextView
         android:id="@+id/status_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp_10"
-        android:text="网络已连接"
+        android:text="未连接"
+        android:textColor="#80FFFFFF"
         app:layout_constraintBottom_toBottomOf="@id/title_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/title_tv" />
 
+    <!-- 顶部分割线 -->
     <View
         android:id="@+id/top_line"
         android:layout_width="match_parent"
@@ -34,6 +38,7 @@
         android:background="@color/line_color"
         app:layout_constraintTop_toBottomOf="@id/title_tv" />
 
+    <!-- 左侧动画 / 图示区域 -->
     <FrameLayout
         android:layout_width="@dimen/dp_0"
         android:layout_height="@dimen/dp_0"
@@ -61,14 +66,17 @@
                 android:layout_height="@dimen/dp_50"
                 android:src="@drawable/radar_1" />
 
-            <ImageView
-                android:layout_width="@dimen/dp_20"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/baseline_more_horiz_24" />
+                android:layout_marginTop="@dimen/dp_6"
+                android:text="正在尝试连接"
+                android:textColor="#80FFFFFF"
+                android:textSize="@dimen/sp_10" />
         </LinearLayout>
     </FrameLayout>
 
+    <!-- 中心占位 -->
     <Space
         android:id="@+id/center_space"
         android:layout_width="wrap_content"
@@ -78,6 +86,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- 右侧连接信息 -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,8 +100,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="等待从机连接..."
+            android:text="请输入主机连接信息"
             android:textColor="@color/white"
+
             android:textSize="@dimen/sp_12" />
 
         <LinearLayout
@@ -100,26 +110,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
             android:background="@drawable/host_info_bg"
-            android:gravity="center"
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/dp_20"
             android:paddingVertical="@dimen/dp_20">
 
+            <!-- IP -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="本机IP地址"
+                android:text="主机 IP"
                 android:textColor="#80FFFFFF"
+
                 android:textSize="@dimen/sp_8" />
 
-            <TextView
-                android:id="@+id/ip_tv"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/ip_et"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_5"
-                android:text="192.168.1.100"
+                android:background="@null"
+                android:hint="例如：192.168.1.100"
+                android:text="192.168.1.49"
+                android:inputType="text"
                 android:textColor="@color/white"
-                android:textSize="@dimen/sp_18" />
+                android:textColorHint="#40FFFFFF"
+                android:textSize="@dimen/sp_14" />
 
             <View
                 android:layout_width="match_parent"
@@ -127,6 +142,7 @@
                 android:layout_marginTop="@dimen/dp_6"
                 android:background="@color/line_color" />
 
+            <!-- 端口 -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,33 +151,38 @@
                 android:textColor="#80FFFFFF"
                 android:textSize="@dimen/sp_8" />
 
-            <TextView
-                android:id="@+id/port_tv"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/port_et"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_5"
-                android:text="80"
-                android:textColor="#CBFFFFFF"
-                android:textSize="@dimen/sp_10" />
+                android:background="@null"
+                android:hint="例如：80"
+                android:text="8080"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textColorHint="#40FFFFFF"
+                android:textSize="@dimen/sp_14" />
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
-            android:text="请在从机设备上输入以上连接信息"
+            android:text="请确认主机处于开启状态"
             android:textColor="#80FFFFFF"
             android:textSize="@dimen/sp_6" />
     </LinearLayout>
 
+    <!-- 底部分割线 -->
     <View
         android:id="@+id/bottom_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0_5"
-        android:layout_marginTop="@dimen/dp_10"
         android:background="@color/line_color"
         app:layout_constraintBottom_toTopOf="@id/bottom_ll" />
 
+    <!-- 底部按钮 -->
     <LinearLayout
         android:id="@+id/bottom_ll"
         android:layout_width="wrap_content"
@@ -187,13 +208,14 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/into_tv"
+            android:id="@+id/connect_tv"
             android:layout_width="@dimen/dp_120"
             android:layout_height="@dimen/dp_35"
             android:background="@drawable/main_confirm_bg"
             android:gravity="center"
-            android:text="进入"
+            android:text="连接"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_12" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

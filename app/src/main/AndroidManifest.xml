@@ -12,11 +12,14 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- For Android 13+ (API level 33+) -->
-    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES"
+    <uses-permission
+        android:name="android.permission.NEARBY_WIFI_DEVICES"
         android:usesPermissionFlags="neverForLocation"
         tools:targetApi="s" />
 
-    <uses-feature android:name="android.hardware.wifi.direct" android:required="true" />
+    <uses-feature
+        android:name="android.hardware.wifi.direct"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -53,8 +56,12 @@
             android:name=".ClientActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.HostActivity"
+            android:name=".ui.host.HostActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.client.ClientActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
