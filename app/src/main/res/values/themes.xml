@@ -7,4 +7,16 @@
     </style>
 
     <style name="Theme.NewFramework" parent="Base.Theme.NewFramework" />
+
+
+    <!-- styles.xml -->
+    <style name="HostActionButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/main_confirm_bg</item>
+    </style>
 </resources>

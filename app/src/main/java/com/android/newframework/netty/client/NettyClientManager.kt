@@ -42,12 +42,13 @@ object NettyClientManager {
 
                 override fun onMessage(msg: String) {
                     _state.value = State.Message(msg)
-                    LogUtils.d("onMessage")
+                    LogUtils.d("onMessage",msg)
                 }
 
                 override fun onError(t: Throwable) {
                     _state.value = State.Error(t)
                     LogUtils.d("onError")
+                    t.printStackTrace()
                 }
             }
         )

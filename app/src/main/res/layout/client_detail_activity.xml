@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!--    android:background="@color/bg_dark"-->
+
+    <!-- ================= 顶部状态栏 ================= -->
+
+    <TextView
+        android:id="@+id/connect_state_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="● 已连接  主机：192.168.1.10"
+        android:textColor="#66FF99"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/top_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0_5"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@color/line_color"
+        app:layout_constraintTop_toBottomOf="@id/connect_state_tv" />
+
+    <!-- ================= 左侧信息区 ================= -->
+
+    <LinearLayout
+        android:id="@+id/left_info_ll"
+        android:layout_width="@dimen/dp_220"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_16"
+        app:layout_constraintBottom_toTopOf="@id/bottom_line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_line">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设备状态"
+            android:textColor="#80FFFFFF"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:id="@+id/device_state_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_6"
+            android:text="RUNNING"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"
+            android:layout_marginVertical="@dimen/dp_12"
+            android:background="@color/line_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前页面"
+            android:textColor="#80FFFFFF"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_6"
+            android:text="运行页（从机）"
+            android:textColor="#CBFFFFFF"
+            android:textSize="@dimen/sp_12" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"
+            android:layout_marginVertical="@dimen/dp_12"
+            android:background="@color/line_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设备编号"
+            android:textColor="#80FFFFFF"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:id="@+id/device_id_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_6"
+            android:text="SLAVE-01"
+            android:textColor="#CBFFFFFF"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+
+    <!-- ================= 中央主视觉区 ================= -->
+
+    <FrameLayout
+        android:id="@+id/center_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/left_info_ll"
+        app:layout_constraintTop_toBottomOf="@id/top_line">
+
+        <!-- 运行动画 -->
+        <com.android.newframework.widget.ConnectionLoadingView
+            android:id="@+id/loading_view"
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="@dimen/dp_300"
+            android:layout_gravity="center" />
+
+        <!-- 状态文字 -->
+        <TextView
+            android:id="@+id/run_state_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_180"
+            android:text="RUNNING"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20" />
+    </FrameLayout>
+
+    <!-- ================= 底部提示 ================= -->
+
+    <View
+        android:id="@+id/bottom_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0_5"
+        android:background="@color/line_color"
+        app:layout_constraintBottom_toTopOf="@id/bottom_tip_tv" />
+
+    <TextView
+        android:id="@+id/bottom_tip_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:text="正在等待主机指令…"
+        android:textColor="#80FFFFFF"
+        android:textSize="@dimen/sp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,14 +4,17 @@ import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
 
 class ServerHandler(
+    private val server: NettyServer,
     private val callback: NettyServer.Callback
 ) : ChannelInboundHandlerAdapter() {
 
     override fun channelActive(ctx: ChannelHandlerContext) {
+        server.addChannel(ctx.channel())
         callback.onClientConnected(ctx.channel().id().asShortText())
     }
 
     override fun channelInactive(ctx: ChannelHandlerContext) {
+        server.removeChannel(ctx.channel())
         callback.onClientDisconnected(ctx.channel().id().asShortText())
     }
 

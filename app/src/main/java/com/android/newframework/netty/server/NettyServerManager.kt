@@ -1,5 +1,7 @@
 package com.android.newframework.netty.server
 
+import com.android.newframework.netty.protocol.SocketMessage
+import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.LogUtils
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -51,6 +53,7 @@ object NettyServerManager {
             override fun onError(t: Throwable) {
                 _state.value = State.Error(t)
                 LogUtils.d("onMessage", t.message)
+                t.printStackTrace()
             }
         })
 
@@ -61,5 +64,15 @@ object NettyServerManager {
         server?.stop()
         server = null
         _state.value = State.Idle
+    }
+
+
+
+    fun sendToClient(channelId: String, text: String) {
+        server?.sendTo(channelId, text)
+    }
+
+    fun broadcast(text: SocketMessage) {
+        server?.broadcast(GsonUtils.toJson(text))
     }
 }

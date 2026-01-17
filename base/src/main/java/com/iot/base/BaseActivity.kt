@@ -68,6 +68,10 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
      */
     protected open fun initView() {}
 
+    protected open fun initListener() {}
+
+
+
     /**
      * 初始化观察者（LiveData / Flow 收集器）。子类需要时可重写。
      * 默认：无操作。
@@ -98,6 +102,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         initView()
         initObserver()
         initData()
+        initListener()
     }
 
     /**

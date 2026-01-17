@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.android.newframework.databinding.HostActivityBinding
 import com.android.newframework.netty.server.NettyServerManager
+import com.android.newframework.ui.detail.DetailActivity
 import com.iot.base.BaseActivity
 import kotlinx.coroutines.launch
 
@@ -32,8 +33,11 @@ class HostActivity : BaseActivity<HostActivityBinding>() {
                             binding.portTv.text = state.port.toString()
                         }
 
+                        is NettyServerManager.State.Started ->{
+                        }
                         is NettyServerManager.State.ClientConnected -> {
 //                            loadingView.showConnected()
+                            DetailActivity.action(this@HostActivity)
                         }
 
                         is NettyServerManager.State.ClientDisconnected -> {

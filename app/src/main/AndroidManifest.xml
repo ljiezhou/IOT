@@ -42,24 +42,18 @@
         </activity>
 
         <activity
-            android:name=".HostActivityOld"
-            android:exported="false" />
-
-        <activity
-            android:name=".ClientActivityOld"
-            android:exported="false" />
-        <activity
-            android:name=".HostActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".ClientActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.host.HostActivity"
             android:exported="false" />
         <activity
             android:name=".ui.client.ClientActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.detail.ClientDetailActivity"
             android:exported="false" />
 
     </application>

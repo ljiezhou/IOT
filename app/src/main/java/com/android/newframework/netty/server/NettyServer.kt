@@ -5,6 +5,7 @@ import io.netty.channel.Channel
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioServerSocketChannel
 import java.net.InetSocketAddress
+import java.util.concurrent.ConcurrentHashMap
 
 class NettyServer(
     private val port: Int,
@@ -22,7 +23,14 @@ class NettyServer(
     private val bossGroup = NioEventLoopGroup(1)
     private val workerGroup = NioEventLoopGroup()
 
-    private var channel: Channel? = null
+    private var serverChannel: Channel? = null
+
+    /** 已连接客户端 */
+    private val channels = ConcurrentHashMap<String, Channel>()
+
+    // =========================
+    // 生命周期
+    // =========================
 
     fun start() {
         Thread {
@@ -30,24 +38,21 @@ class NettyServer(
                 val bootstrap = ServerBootstrap()
                     .group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel::class.java)
-                    .childHandler(ServerInitializer(callback))
+                    .childHandler(ServerInitializer(this, callback))
 
-                val future = bootstrap.bind(port).sync()
-                channel = future.channel()
+                val bindFuture = bootstrap.bind(port).sync()
+                serverChannel = bindFuture.channel()
 
-                if (channel?.isActive == true) {
-                    val localAddress = channel?.localAddress() as? InetSocketAddress
-                    val ip = localAddress?.address?.hostAddress ?: ""
+                if (serverChannel?.isActive == true) {
+                    val address = serverChannel?.localAddress() as InetSocketAddress
+                    val ip = address.address.hostAddress ?: "0.0.0.0"
                     callback.onStarted(ip, port)
                 } else {
-                    callback.onError(
-                        IllegalStateException("Netty server start failed")
-                    )
-                    stop()
-                    return@Thread
+                    throw IllegalStateException("Netty server start failed")
                 }
 
-                channel?.closeFuture()?.sync()
+                // 阻塞直到关闭
+                serverChannel?.closeFuture()?.sync()
 
             } catch (e: Exception) {
                 callback.onError(e)
@@ -59,10 +64,54 @@ class NettyServer(
 
     fun stop() {
         try {
-            channel?.close()
+            serverChannel?.close()
+            channels.values.forEach { it.close() }
+            channels.clear()
             bossGroup.shutdownGracefully()
             workerGroup.shutdownGracefully()
         } catch (_: Exception) {
         }
     }
+
+    // =========================
+    // Channel 管理（给 Handler 调）
+    // =========================
+
+    internal fun addChannel(channel: Channel) {
+        val id = channel.id().asShortText()
+        channels[id] = channel
+        callback.onClientConnected(id)
+    }
+
+    internal fun removeChannel(channel: Channel) {
+        val id = channel.id().asShortText()
+        channels.remove(id)
+        callback.onClientDisconnected(id)
+    }
+
+    // =========================
+    // 对外通信 API
+    // =========================
+
+    /** 单播 */
+    fun sendTo(clientId: String, msg: String) {
+        channels[clientId]?.let {
+            if (it.isActive) {
+                it.writeAndFlush(msg + "\n")
+            }
+        }
+    }
+
+    /** 广播 */
+    fun broadcast(msg: String) {
+        channels.values.forEach {
+            if (it.isActive) {
+                it.writeAndFlush(msg + "\n")
+            }
+        }
+    }
+
+    fun getClientCount(): Int = channels.size
+
+    fun getClientIds(): List<String> = channels.keys.toList()
 }
