@@ -29,9 +29,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             binding.clientTv.isSelected = true
             binding.hostTv.isSelected = false
             AppState.isHost = false
-            if (AppState.isHost == false) {
-                ClientActivity.action(this)
-            }
+//            if (AppState.isHost == false) {
+//                ClientActivity.action(this)
+//            }
         }
         binding.confirmTv.setOnClickListener {
             if (AppState.isHost == null) {
@@ -40,6 +40,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
             if (AppState.isHost!!) {
                 HostActivity.action(this)
+            } else {
+                ClientActivity.action(this)
             }
         }
     }

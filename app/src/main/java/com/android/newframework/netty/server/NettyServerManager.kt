@@ -3,6 +3,7 @@ package com.android.newframework.netty.server
 import com.android.newframework.netty.protocol.SocketMessage
 import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.NetworkUtils
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -31,8 +32,10 @@ object NettyServerManager {
         server = NettyServer(port, object : NettyServer.Callback {
 
             override fun onStarted(ip: String, port: Int) {
-                _state.value = State.Started(ip, port)
-                LogUtils.d("onStarted", ip, port)
+//                _state.value = State.Started(ip, port)
+                _state.value = State.Started(NetworkUtils.getIPAddress(true), port)
+                LogUtils.d("onStarted", ip, port,NetworkUtils.getIPAddress(true))
+
             }
 
             override fun onClientConnected(id: String) {

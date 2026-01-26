@@ -56,14 +56,18 @@ class DetailActivity : BaseActivity<DetailActivityBinding>() {
     override fun initListener() {
         super.initListener()
         binding.btnStart.setOnClickListener {
-//            NettyServerManager.sendMessage("Hello from Host")
-            NettyServerManager.broadcast(SocketMessage(
-                type = MessageType.EVENT,
-                action = Action.ANIMATION_START
-            ))
+            NettyServerManager.broadcast(SocketMessage(type = MessageType.EVENT, action = Action.ANIMATION_START))
         }
+        binding.btnStop.setOnClickListener {
+            NettyServerManager.broadcast(SocketMessage(type = MessageType.EVENT, action = Action.ANIMATION_STOP))
+        }
+        binding.btnPause.setOnClickListener {
+            NettyServerManager.broadcast(SocketMessage(type = MessageType.EVENT, action = Action.ANIMATION_PAUSE))
+        }
+
     }
-    companion object{
+
+    companion object {
         fun action(context: android.content.Context) {
             context.startActivity(android.content.Intent(context, DetailActivity::class.java))
         }

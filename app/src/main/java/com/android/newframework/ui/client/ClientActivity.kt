@@ -34,7 +34,7 @@ class ClientActivity : BaseActivity<ClientActivityBinding>() {
     override fun initListener() {
         super.initListener()
         binding.connectTv.setOnClickListener {
-            NettyClientManager.connect(binding.ipEt.text.toString().trim(), 8080)
+            NettyClientManager.connect(binding.ipEt.text.toString().trim(), 8888)
         }
         binding.backTv.setOnClickListener {
             finish()

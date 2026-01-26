@@ -49,7 +49,7 @@ class HostActivity : BaseActivity<HostActivityBinding>() {
                 }
             }
         }
-        NettyServerManager.start(8080)
+        NettyServerManager.start(8888)
     }
 
     companion object {
