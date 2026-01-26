@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import androidx.lifecycle.lifecycleScope
 import com.android.newframework.AppState
 import com.android.newframework.databinding.DetailActivityBinding
+import com.android.newframework.netty.callback.DataCallback
 import com.android.newframework.netty.client.NettyClientManager
 import com.android.newframework.netty.protocol.Action
 import com.android.newframework.netty.protocol.MessageType
@@ -65,6 +66,27 @@ class DetailActivity : BaseActivity<DetailActivityBinding>() {
             NettyServerManager.broadcast(SocketMessage(type = MessageType.EVENT, action = Action.ANIMATION_PAUSE))
         }
 
+    }
+
+    private val dataCallback = object : DataCallback {
+        override fun onDataSent(channelId: String?, text: String) {
+            binding.logTv.append("Sent to ${channelId ?: "all"}: $text\n")
+        }
+
+        override fun onDataReceived(channelId: String, text: String) {
+            binding.logTv.append("Received from $channelId: $text\n")
+        }
+
+    }
+
+    override fun initData() {
+        super.initData()
+        NettyServerManager.registerCallback(dataCallback)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        NettyServerManager.unregisterCallback(dataCallback)
     }
 
     companion object {
