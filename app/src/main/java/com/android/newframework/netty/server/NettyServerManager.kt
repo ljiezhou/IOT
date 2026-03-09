@@ -1,11 +1,13 @@
 package com.android.newframework.netty.server
 
+import com.android.newframework.netty.callback.DataCallback
 import com.android.newframework.netty.protocol.SocketMessage
 import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.NetworkUtils
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import java.util.concurrent.CopyOnWriteArrayList
 
 object NettyServerManager {
 
@@ -34,7 +36,7 @@ object NettyServerManager {
             override fun onStarted(ip: String, port: Int) {
 //                _state.value = State.Started(ip, port)
                 _state.value = State.Started(NetworkUtils.getIPAddress(true), port)
-                LogUtils.d("onStarted", ip, port,NetworkUtils.getIPAddress(true))
+                LogUtils.d("onStarted", ip, port, NetworkUtils.getIPAddress(true))
 
             }
 
@@ -51,6 +53,9 @@ object NettyServerManager {
             override fun onMessage(id: String, msg: String) {
                 _state.value = State.Message(id, msg)
                 LogUtils.d("onMessage", id, msg)
+                for (cb in callbacks) {
+                    cb.onDataReceived(id, msg)
+                }
             }
 
             override fun onError(t: Throwable) {
@@ -70,12 +75,37 @@ object NettyServerManager {
     }
 
 
-
     fun sendToClient(channelId: String, text: String) {
         server?.sendTo(channelId, text)
+        for (cb in callbacks) {
+            try {
+                cb.onDataSent(channelId, text)
+            } catch (e: Throwable) {
+                e.printStackTrace()
+            }
+        }
     }
 
     fun broadcast(text: SocketMessage) {
         server?.broadcast(GsonUtils.toJson(text))
+        for (cb in callbacks) {
+            try {
+                cb.onDataSent(null, GsonUtils.toJson(text))
+            } catch (e: Throwable) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+
+
+    private val callbacks = CopyOnWriteArrayList<DataCallback>()
+
+    fun registerCallback(cb: DataCallback) {
+        if (!callbacks.contains(cb)) callbacks.add(cb)
+    }
+
+    fun unregisterCallback(cb: DataCallback) {
+        callbacks.remove(cb)
     }
 }

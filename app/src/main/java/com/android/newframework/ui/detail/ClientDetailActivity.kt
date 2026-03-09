@@ -45,10 +45,12 @@ class ClientDetailActivity : BaseActivity<ClientDetailActivityBinding>() {
                 when (message.action) {
                     Action.ANIMATION_START -> {
                         binding.deviceStateTv.text = "Start"
+                        binding.loadingView.startWaiting()
                     }
 
                     Action.ANIMATION_STOP -> {
                         binding.deviceStateTv.text = "Stop"
+                        binding.loadingView.stop()
                     }
 
                     Action.ANIMATION_PAUSE -> {
