@@ -3,9 +3,34 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="circle_color1">#1E90FF</color>
-    <color name="circle_color2">#4A6572</color>
-    <!--    role-btn w-[240px] h-[240px] rounded-full border-4 border-[#1E90FF] flex flex-col items-center justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#4A6572]-->
+    <!-- 低饱和度科技风格配色 -->
+    <color name="circle_color1">#7AB8E8</color>  <!-- 柔和浅蓝，降低饱和度 -->
+    <color name="circle_color2">#B8D4E6</color>  <!-- 更浅的蓝灰色 -->
 
-    <color name="line_color">#33FFFFFF</color>
+    <!-- 主要强调色 -->
+    <color name="primary_light">#A4C8E1</color>   <!-- 主强调色 - 浅天蓝 -->
+    <color name="primary_lighter">#D4E8F5</color> <!-- 次要强调色 - 极浅蓝 -->
+
+    <!-- 背景色系 -->
+    <color name="bg_primary">#F8FAFB</color>      <!-- 主背景 - 浅灰白 -->
+    <color name="bg_secondary">#EFF4F7</color>    <!-- 次背景 - 浅蓝灰 -->
+    <color name="bg_card">#FFFFFF</color>         <!-- 卡片背景 - 纯白 -->
+
+    <!-- 文字色系 -->
+    <color name="text_primary">#2C3E50</color>    <!-- 主文字 - 深蓝灰 -->
+    <color name="text_secondary">#7A8FA3</color>  <!-- 次要文字 - 中灰蓝 -->
+    <color name="text_tertiary">#B0BEC5</color>   <!-- 三级文字 - 浅灰 -->
+
+    <!-- 分割线/边框 -->
+    <color name="line_color">#E5EDF2</color>      <!-- 分割线 - 极浅蓝灰 -->
+    <color name="border_light">#D8E4ED</color>    <!-- 浅边框 -->
+
+    <!-- 状态色 -->
+    <color name="success">#8BC34A</color>         <!-- 成功 - 柔和绿 -->
+    <color name="warning">#FFA726</color>         <!-- 警告 - 柔和橙 -->
+    <color name="error">#EF9A9A</color>           <!-- 错误 - 柔和红 -->
+
+    <!-- 半透明层 -->
+    <color name="overlay_light">#1A000000</color> <!-- 10%黑色遮罩 -->
+    <color name="overlay_medium">#33000000</color><!-- 20%黑色遮罩 -->
 </resources>

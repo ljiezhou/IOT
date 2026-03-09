@@ -2,4 +2,5 @@ build
 .gradle
 .idea
 .kotlin
-.idea
+.idea/
+.gradle/

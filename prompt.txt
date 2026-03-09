@@ -1,0 +1,9 @@
+这是一个Android项目
+com.android.newframework.ui.MainActivity 首页
+com.android.newframework.ui.host.HostActivity 主机链接页面
+com.android.newframework.ui.client.ClientActivity 从机链接页面
+com.android.newframework.ui.detail.ClientDetailActivity 从机详情页面
+com.android.newframework.ui.detail.DetailActivity 主机详情页面
+
+现在的页面科技感不够，以以下的要求进行修改：1.干净、低饱和度:颜色偏浅蓝或者浅绿白色等，避免刺眼色2.信息层级清晰:关键数据放大，次要信息收起
+
