@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary">
 
     <!-- 标题 -->
     <TextView
@@ -12,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_10"
         android:text="从机模式"
-        android:textColor="#CBFFFFFF"
-        android:textSize="@dimen/sp_16"
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp_10"
         android:text="未连接"
-        android:textColor="#80FFFFFF"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@id/title_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/title_tv" />
@@ -71,8 +73,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_6"
                 android:text="正在尝试连接"
-                android:textColor="#80FFFFFF"
-                android:textSize="@dimen/sp_10" />
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
         </LinearLayout>
     </FrameLayout>
 
@@ -101,9 +103,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="请输入主机连接信息"
-            android:textColor="@color/white"
-
-            android:textSize="@dimen/sp_12" />
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="@dimen/dp_200"
@@ -119,9 +120,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="主机 IP"
-                android:textColor="#80FFFFFF"
-
-                android:textSize="@dimen/sp_8" />
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/ip_et"
@@ -132,9 +132,10 @@
                 android:hint="例如：192.168.1.100"
                 android:text="192.168.1.49"
                 android:inputType="text"
-                android:textColor="@color/white"
-                android:textColorHint="#40FFFFFF"
-                android:textSize="@dimen/sp_14" />
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_tertiary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
@@ -148,8 +149,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10"
                 android:text="端口"
-                android:textColor="#80FFFFFF"
-                android:textSize="@dimen/sp_8" />
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/port_et"
@@ -160,9 +161,10 @@
                 android:hint="例如：8888"
                 android:text="8888"
                 android:inputType="number"
-                android:textColor="@color/white"
-                android:textColorHint="#40FFFFFF"
-                android:textSize="@dimen/sp_14" />
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_tertiary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <TextView
@@ -170,8 +172,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
             android:text="请确认主机处于开启状态"
-            android:textColor="#80FFFFFF"
-            android:textSize="@dimen/sp_6" />
+            android:textColor="@color/text_tertiary"
+            android:textSize="10sp" />
     </LinearLayout>
 
     <!-- 底部分割线 -->
@@ -200,8 +202,8 @@
             android:background="@drawable/main_cancel_bg"
             android:gravity="center"
             android:text="返回"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_12" />
+            android:textColor="@color/text_primary"
+            android:textSize="14sp" />
 
         <Space
             android:layout_width="@dimen/dp_50"
@@ -214,8 +216,8 @@
             android:background="@drawable/main_confirm_bg"
             android:gravity="center"
             android:text="连接"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_12" />
+            android:textColor="@color/text_primary"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

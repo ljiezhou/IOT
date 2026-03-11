@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<!--    android:background="@color/bg_dark"-->
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary">
 
     <!-- ================= 顶部状态栏 ================= -->
 
@@ -14,8 +14,8 @@
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_12"
         android:text="● 已连接  主机：192.168.1.10"
-        android:textColor="#66FF99"
-        android:textSize="@dimen/sp_12"
+        android:textColor="@color/success"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,8 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="设备状态"
-            android:textColor="#80FFFFFF"
-            android:textSize="@dimen/sp_10" />
+            android:textColor="@color/text_tertiary"
+            android:textSize="9sp" />
 
         <TextView
             android:id="@+id/device_state_tv"
@@ -52,8 +52,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_6"
             android:text="RUNNING"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_16" />
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/sp_14" />
 
         <View
             android:layout_width="match_parent"
@@ -65,16 +65,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="当前页面"
-            android:textColor="#80FFFFFF"
-            android:textSize="@dimen/sp_10" />
+            android:textColor="@color/text_tertiary"
+            android:textSize="9sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_6"
             android:text="运行页（从机）"
-            android:textColor="#CBFFFFFF"
-            android:textSize="@dimen/sp_12" />
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/sp_11" />
 
         <View
             android:layout_width="match_parent"
@@ -86,8 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="设备编号"
-            android:textColor="#80FFFFFF"
-            android:textSize="@dimen/sp_10" />
+            android:textColor="@color/text_tertiary"
+            android:textSize="9sp" />
 
         <TextView
             android:id="@+id/device_id_tv"
@@ -95,8 +95,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_6"
             android:text="SLAVE-01"
-            android:textColor="#CBFFFFFF"
-            android:textSize="@dimen/sp_12" />
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/sp_11" />
     </LinearLayout>
 
     <!-- ================= 中央主视觉区 ================= -->
@@ -125,8 +125,9 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dp_180"
             android:text="RUNNING"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_20" />
+            android:textColor="@color/text_primary"
+            android:textSize="32sp"
+            android:textStyle="bold" />
     </FrameLayout>
 
     <!-- ================= 底部提示 ================= -->
@@ -144,8 +145,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dp_12"
         android:text="正在等待主机指令…"
-        android:textColor="#80FFFFFF"
-        android:textSize="@dimen/sp_10"
+        android:textColor="@color/text_tertiary"
+        android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

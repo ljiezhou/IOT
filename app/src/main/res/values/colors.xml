@@ -12,13 +12,13 @@
     <color name="primary_lighter">#D4E8F5</color> <!-- 次要强调色 - 极浅蓝 -->
 
     <!-- 背景色系 -->
-    <color name="bg_primary">#F8FAFB</color>      <!-- 主背景 - 浅灰白 -->
+    <color name="bg_primary">#6392E0</color>      <!-- 主背景 - 浅灰白 -->
     <color name="bg_secondary">#EFF4F7</color>    <!-- 次背景 - 浅蓝灰 -->
     <color name="bg_card">#FFFFFF</color>         <!-- 卡片背景 - 纯白 -->
 
     <!-- 文字色系 -->
     <color name="text_primary">#2C3E50</color>    <!-- 主文字 - 深蓝灰 -->
-    <color name="text_secondary">#7A8FA3</color>  <!-- 次要文字 - 中灰蓝 -->
+    <color name="text_secondary">#ffffff</color>  <!-- 次要文字 - 中灰蓝 -->
     <color name="text_tertiary">#B0BEC5</color>   <!-- 三级文字 - 浅灰 -->
 
     <!-- 分割线/边框 -->
