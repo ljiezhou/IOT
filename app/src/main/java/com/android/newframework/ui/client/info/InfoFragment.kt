@@ -8,6 +8,8 @@ import com.android.newframework.ui.client.info.adapter.QuickActionAdapter
 import com.android.newframework.ui.client.info.adapter.RecentInfoAdapter
 import com.android.newframework.ui.client.info.adapter.TodayInfoAdapter
 import com.android.newframework.ui.client.info.adapter.TopInfoAdapter
+import com.blankj.utilcode.util.StringUtils
+import com.chad.library.adapter4.BaseQuickAdapter
 import com.iot.GridSpacingDecoration
 import com.iot.base.BaseFragment
 import com.iot.base.R
@@ -32,9 +34,13 @@ class InfoFragment : BaseFragment<ClientInfoFragmentBinding>() {
         binding.quickActionsRv.addItemDecoration(GridSpacingDecoration(6, requireContext().resources.getDimension(R.dimen.dp_5).toInt(), false))
         binding.quickActionsRv.adapter = quickActionAdapter
 
+        recentVisitsAdapter.animationEnable = true
         binding.recentVisitsItemRv.adapter = recentVisitsAdapter
+        recentVisitsAdapter.setItemAnimation(BaseQuickAdapter.AnimationType.SlideInRight)
 
+        todayAppointmentsAdapter.animationEnable = true
         binding.todayAppointmentsItemRv.adapter = todayAppointmentsAdapter
+        todayAppointmentsAdapter.setItemAnimation(BaseQuickAdapter.AnimationType.SlideInRight)
     }
 
     override fun initObserver() {
@@ -56,6 +62,32 @@ class InfoFragment : BaseFragment<ClientInfoFragmentBinding>() {
     override fun initData() {
         super.initData()
         viewModel.updateTopInfo()
+    }
+
+    fun updateText(title: String) {
+        when (title) {
+            StringUtils.getString(com.android.newframework.R.string.host_detail_btn_refresh) -> {
+                viewModel.updateRecentVisitsInfo()
+                viewModel.updateTodayAppointmentsInfo()
+            }
+
+            StringUtils.getString(com.android.newframework.R.string.host_detail_btn_add_patient) -> {
+                todayAppointmentsAdapter.add(0, viewModel.getSampleTodayAppointmentsSets())
+            }
+
+            StringUtils.getString(com.android.newframework.R.string.host_detail_btn_remove_patient) -> {
+                todayAppointmentsAdapter.removeAt(todayAppointmentsAdapter.items.size - 1)
+            }
+
+            StringUtils.getString(com.android.newframework.R.string.host_detail_btn_add_recent) -> {
+                recentVisitsAdapter.add(0, viewModel.getSampleRecentVisitsSets())
+            }
+
+            StringUtils.getString(com.android.newframework.R.string.host_detail_btn_remove_recent) -> {
+                recentVisitsAdapter.removeAt(recentVisitsAdapter.items.size - 1)
+            }
+        }
+
     }
 
 }

@@ -19,7 +19,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         return ActivityMainBinding.inflate(inflater)
     }
 
-
     override fun initView() {
         super.initView()
         binding.hostTv.setSelectedState(false)
@@ -50,7 +49,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 ClientActivity.action(this)
             }
         }
+
 //        FragmentUtils.add(supportFragmentManager, InfoFragment(), R.id.container)
-        binding.container.isVisible = false
+//        binding.container.isVisible = true
     }
 }

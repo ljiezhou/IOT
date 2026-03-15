@@ -4,6 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import com.android.newframework.R
 import com.iot.CommonInfoItem
 import com.iot.base.BaseViewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class InfoViewModel : BaseViewModel() {
 
@@ -56,5 +59,41 @@ class InfoViewModel : BaseViewModel() {
         info.add(CommonInfoItem(title = "李四", description = "10:30 - 11:00"))
         info.add(CommonInfoItem(title = "王五", description = "11:00 - 11:30"))
         todayAppointmentsInfo.value = info
+    }
+
+
+    // 多组可复用的模拟数据集合，便于测试/批量添加
+    fun getSampleRecentVisitsSets(): CommonInfoItem {
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+        val now = Calendar.getInstance()
+        val set1 = listOf(
+            CommonInfoItem(title = "赵六", description = sdf.format(now.time)),
+            CommonInfoItem(title = "钱七", description = sdf.apply { now.add(Calendar.MINUTE, -20) }.format(now.time)),
+            CommonInfoItem(title = "孙八", description = sdf.apply { now.add(Calendar.MINUTE, -40) }.format(now.time)),
+            CommonInfoItem(title = "周九", description = "2024-06-02 14:00"),
+            CommonInfoItem(title = "吴十", description = "2024-06-02 13:30"),
+            CommonInfoItem(title = "郑一", description = "2024-05-31 16:20"),
+            CommonInfoItem(title = "王二", description = "2024-05-31 15:50"),
+            CommonInfoItem(title = "朱三", description = "2024-05-31 15:10"),
+            CommonInfoItem(title = "许四", description = "2024-05-31 14:40")
+        )
+        return set1.random()
+    }
+
+    fun getSampleTodayAppointmentsSets(): CommonInfoItem {
+        val set1 = listOf(
+            CommonInfoItem(title = "陈小明", description = "08:30 - 09:00"),
+            CommonInfoItem(title = "李小红", description = "09:00 - 09:30"),
+            CommonInfoItem(title = "周小强", description = "09:30 - 10:00"),
+            CommonInfoItem(title = "林大海", description = "11:00 - 11:30"),
+            CommonInfoItem(title = "苏小丽", description = "11:30 - 12:00"),
+            CommonInfoItem(title = "高峰", description = "14:00 - 14:30"),
+            CommonInfoItem(title = "马兰", description = "14:30 - 15:00"),
+            CommonInfoItem(title = "刘波", description = "15:00 - 15:30"),
+            CommonInfoItem(title = "黄亮", description = "15:30 - 16:00"),
+            CommonInfoItem(title = "测试患者A", description = "17:00 - 17:15"),
+            CommonInfoItem(title = "测试患者B", description = "17:15 - 17:30")
+        )
+        return set1.random()
     }
 }

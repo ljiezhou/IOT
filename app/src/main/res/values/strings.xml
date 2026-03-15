@@ -5,4 +5,12 @@
     <string name="recent_visits_title">最近就诊</string>
     <string name="today_appointments_title">今日预约</string>
 
+    <!--    HostDetailActivity-->
+    <string name="host_detail_btn_start">开始</string>
+    <string name="host_detail_btn_refresh">刷新数据</string>
+    <string name="host_detail_btn_add_patient">新增预约患者</string>
+    <string name="host_detail_btn_remove_patient">删除预约患者</string>
+    <string name="host_detail_btn_add_recent">新增就诊患者</string>
+    <string name="host_detail_btn_remove_recent">删除就诊患者</string>
+
 </resources>

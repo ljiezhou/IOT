@@ -10,9 +10,11 @@ import com.android.newframework.netty.client.NettyClientManager
 import com.android.newframework.netty.protocol.Action
 import com.android.newframework.netty.protocol.MessageType
 import com.android.newframework.netty.protocol.SocketMessage
+import com.android.newframework.netty.protocol.TextMessagePayload
 import com.android.newframework.ui.client.info.InfoFragment
 import com.blankj.utilcode.util.FragmentUtils
 import com.blankj.utilcode.util.GsonUtils
+import com.blankj.utilcode.util.StringUtils
 import com.iot.base.BaseActivity
 import kotlinx.coroutines.launch
 
@@ -44,6 +46,8 @@ class ClientDetailActivity : BaseActivity<ClientDetailActivityBinding>() {
 
             }
         }
+
+//        FragmentUtils.add(supportFragmentManager, infoFragment, R.id.center_container)
     }
 
     private fun handleSocketMessage(message: SocketMessage) {
@@ -53,7 +57,7 @@ class ClientDetailActivity : BaseActivity<ClientDetailActivityBinding>() {
                     Action.ANIMATION_START -> {
 //                        binding.deviceStateTv.text = "Start"
 //                        binding.loadingView.startWaiting()
-                        FragmentUtils.add(supportFragmentManager, infoFragment, R.id.center_container)
+//                        FragmentUtils.add(supportFragmentManager, infoFragment, R.id.center_container)
                     }
 
                     Action.ANIMATION_STOP -> {
@@ -63,6 +67,15 @@ class ClientDetailActivity : BaseActivity<ClientDetailActivityBinding>() {
 
                     Action.ANIMATION_PAUSE -> {
                         binding.deviceStateTv.text = "Pause"
+                    }
+
+                    Action.TEXT_MESSAGE -> {
+                        val payload = message.payload as TextMessagePayload
+                        if (StringUtils.getString(com.android.newframework.R.string.host_detail_btn_start) == payload.title) {
+                            FragmentUtils.add(supportFragmentManager, infoFragment, R.id.center_container)
+                            return
+                        }
+                        infoFragment.updateText(payload.title)
                     }
 
                     else -> {

@@ -49,7 +49,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ui.detail.DetailActivity"
+            android:name=".ui.host.detail.HostDetailActivity"
             android:exported="false" />
 
         <activity
