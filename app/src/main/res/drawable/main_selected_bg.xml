@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 按钮背景 -->
     <item>
         <shape>
-            <solid android:color="#0F4C75" />
+            <solid android:color="#4AA8FF" />
             <corners android:radius="@dimen/dp_200" />
         </shape>
     </item>
+
+    <!-- 内部描边 -->
     <item
         android:bottom="@dimen/dp_4"
         android:left="@dimen/dp_4"
         android:right="@dimen/dp_4"
         android:top="@dimen/dp_4">
-        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <shape>
             <stroke
                 android:width="@dimen/dp_4"
-                android:color="@color/circle_color1" />
+                android:color="#E6F2FF" />
             <corners android:radius="@dimen/dp_200" />
         </shape>
+
     </item>
+
 </layer-list>

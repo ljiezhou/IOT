@@ -12,7 +12,7 @@
     <color name="primary_lighter">#D4E8F5</color> <!-- 次要强调色 - 极浅蓝 -->
 
     <!-- 背景色系 -->
-    <color name="bg_primary">#6392E0</color>      <!-- 主背景 - 浅灰白 -->
+    <color name="bg_primary">#F0F4F8</color>      <!-- 主背景 - 浅灰白 -->
     <color name="bg_secondary">#EFF4F7</color>    <!-- 次背景 - 浅蓝灰 -->
     <color name="bg_card">#FFFFFF</color>         <!-- 卡片背景 - 纯白 -->
 
@@ -22,8 +22,8 @@
     <color name="text_tertiary">#B0BEC5</color>   <!-- 三级文字 - 浅灰 -->
 
     <!-- 分割线/边框 -->
-    <color name="line_color">#E5EDF2</color>      <!-- 分割线 - 极浅蓝灰 -->
-    <color name="border_light">#D8E4ED</color>    <!-- 浅边框 -->
+    <color name="line_color">#D0DDE8</color>      <!-- 分割线 - 极浅蓝灰 -->
+    <color name="border_light">#D6E6FF</color>    <!-- 浅边框 -->
 
     <!-- 状态色 -->
     <color name="success">#8BC34A</color>         <!-- 成功 - 柔和绿 -->
@@ -33,4 +33,92 @@
     <!-- 半透明层 -->
     <color name="overlay_light">#1A000000</color> <!-- 10%黑色遮罩 -->
     <color name="overlay_medium">#33000000</color><!-- 20%黑色遮罩 -->
+
+
+    <!-- ================= 主背景 ================= -->
+
+    <color name="bg_primary_1">#F2F8FF</color>
+    <color name="bg_primary_2">#EDF5FF</color>
+    <color name="bg_primary_3">#E8F3FF</color>
+
+    <!-- ================= 卡片背景 ================= -->
+
+    <color name="bg_card_1">#E6F2FF</color>
+    <color name="bg_card_2">#E3F0FF</color>
+    <color name="bg_card_3">#DCEBFF</color>
+
+    <!-- ================= 科技蓝主色 ================= -->
+
+    <color name="tech_blue_1">#3FA7FF</color>
+    <color name="tech_blue_2">#4AA8FF</color>
+    <color name="tech_blue_3">#5CB2FF</color>
+
+    <!-- ================= 深蓝（点击 / hover） ================= -->
+
+    <color name="tech_blue_deep_1">#2E8BFF</color>
+    <color name="tech_blue_deep_2">#1F7AFF</color>
+    <color name="tech_blue_deep_3">#1677FF</color>
+
+    <!-- ================= 分割线 ================= -->
+
+    <color name="line_blue_1">#D6E6FF</color>
+    <color name="line_blue_2">#D0E2FF</color>
+    <color name="line_blue_3">#C6DAFF</color>
+
+    <!-- ================= 文字 ================= -->
+
+    <!--    <color name="text_primary">#1F2D3D</color>-->
+    <!--    <color name="text_secondary">#5A6A7A</color>-->
+
+    <!-- xml -->
+    <!-- 标题 - 深色/主标题 -->
+    <color name="text_heading_primary">#1F2D3D</color>
+    <!-- 标题 - 反色（用于深色背景上的标题） -->
+    <color name="text_heading_inverse">#FFFFFFFF</color>
+    <!-- 正文 - 主文本（复用已有主文字颜色） -->
+    <color name="text_body_primary">@color/text_primary</color>
+    <!-- 正文 - 反色（用于深色背景上的正文） -->
+    <color name="text_body_inverse">#FFFFFFFF</color>
+
+
+    <color name="btn_text_primary">#FFFFFF</color>
+
+
+    <color name="connent_color1">#3FA7FF</color>
+    <color name="connent_color2">#DCEBFF</color>
+
+
+
+
+
+    <!-- 主题色（确定按钮） -->
+    <color name="color_brand_primary">#4A90E2</color>
+
+    <!-- 页面背景色 -->
+    <color name="color_bg_page">#F0F4F8</color>
+
+    <!-- 浅色背景标题颜色 -->
+    <color name="color_text_title_light">#1A2B3C</color>
+
+    <!-- 深色背景标题颜色 -->
+    <color name="color_text_title_dark">#FFFFFF</color>
+
+    <!-- 浅色背景文本颜色 -->
+    <color name="color_text_body_light">#5A6C7D</color>
+
+    <!-- 深色背景文本颜色 -->
+    <color name="color_text_body_dark">#E8F0F8</color>
+
+    <!-- 分割线颜色 -->
+    <color name="color_divider">#D0DDE8</color>
+
+    <!-- 信息区域背景色（卡片） -->
+    <color name="color_bg_card">#FFFFFF</color>
+
+    <!-- 信息区域边框色 -->
+    <color name="color_border_card">#B8D4E8</color>
+
+    <color name="color_white">#ffffff</color>
+    <color name="color_black">#000000</color>
+
 </resources>

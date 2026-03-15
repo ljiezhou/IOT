@@ -7,9 +7,16 @@ local.properties
 .DS_Store
 
 build
+.gradle
+.idea
+.kotlin
+.idea
+local.properties
+.DS_Store
+
+build
 .gradle/
 .idea
 .kotlin
+.kotlin
 .idea/
-local.properties
-.DS_Store

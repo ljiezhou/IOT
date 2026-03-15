@@ -6,6 +6,8 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
+import androidx.core.content.ContextCompat
+import com.android.newframework.R
 import kotlin.math.min
 
 class ConnectionLoadingView @JvmOverloads constructor(
@@ -13,31 +15,35 @@ class ConnectionLoadingView @JvmOverloads constructor(
     attrs: AttributeSet? = null
 ) : View(context, attrs) {
 
-    private val mainColor = Color.parseColor("#4A7189")
+    private val outerColor = R.color.connent_color1
+    private val middleColor = R.color.connent_color1
+    private val centerColor = R.color.connent_color1
+    private val rippleColor = R.color.connent_color1
+    private val backgroundColor = R.color.connent_color2
 
     private val outerPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeWidth = dp(2f)
-        color = mainColor
+        color = ContextCompat.getColor(context, outerColor)
         alpha = 150
     }
 
     private val middlePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeWidth = dp(1f)
-        color = mainColor
+        color = ContextCompat.getColor(context, middleColor)
         alpha = 80
     }
 
     private val centerPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
-        color = Color.parseColor("#2D4A5E")
+        color = ContextCompat.getColor(context, centerColor)
     }
 
     private val ripplePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeWidth = dp(1f)
-        color = mainColor
+        color = ContextCompat.getColor(context, rippleColor)
     }
 
     private var pulseScale = 1f
@@ -74,7 +80,7 @@ class ConnectionLoadingView @JvmOverloads constructor(
 
     private val backgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
-        color = Color.parseColor("#2D4A5E") // 你现在用的工业蓝
+        color = ContextCompat.getColor(context, backgroundColor) // 你现在用的工业蓝
     }
 
     private fun drawRipple(

@@ -51,4 +51,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+//    api("com.github.kongzue.DialogX:DialogX:0.0.50.beta11")
+    api("com.github.li-xiaojun:XPopup:2.10.0")
 }

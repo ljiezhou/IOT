@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NewFramework</string>
+    <string name="quick_actions_title">快捷操作</string>
+
+    <string name="recent_visits_title">最近就诊</string>
+    <string name="today_appointments_title">今日预约</string>
+
 </resources>

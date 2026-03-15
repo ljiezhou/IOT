@@ -45,7 +45,7 @@
             android:name=".ui.host.HostActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.client.ClientActivity"
+            android:name=".ui.client.connect.ClientActivity"
             android:exported="false" />
 
         <activity
@@ -53,7 +53,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ui.detail.ClientDetailActivity"
+            android:name=".ui.client.detail.ClientDetailActivity"
             android:exported="false" />
 
     </application>

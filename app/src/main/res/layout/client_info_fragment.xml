@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/top_fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/dp_8"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/logo_iv"
+                android:layout_width="@dimen/dp_15"
+                android:layout_height="@dimen/dp_15" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_5"
+                android:text="医疗管理系统"
+                android:textColor="@color/color_text_title_light"
+                android:textSize="@dimen/sp_10" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_gravity="bottom" />
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/top_total_info_rv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:layout_marginHorizontal="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintTop_toBottomOf="@id/top_fl"
+        app:spanCount="4"
+        tools:itemCount="4"
+        tools:listitem="@layout/client_info_top_item_layout" />
+
+    <LinearLayout
+        android:id="@+id/action_ll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:layout_marginHorizontal="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/bg_section_card1"
+        android:orientation="vertical"
+        app:layout_constraintHeight_percent="0.14"
+        app:layout_constraintTop_toBottomOf="@id/top_total_info_rv">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="@string/quick_actions_title"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/sp_6" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/quick_actions_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/dp_8"
+            android:layout_marginVertical="@dimen/dp_5"
+            android:layout_weight="1"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="6"
+            tools:itemCount="6"
+            tools:listitem="@layout/client_quick_action_item_layout" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/recent_visits_ll"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/bg_section_card1"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_space"
+        app:layout_constraintEnd_toStartOf="@id/bottom_space"
+        app:layout_constraintStart_toStartOf="@id/action_ll"
+        app:layout_constraintTop_toBottomOf="@id/action_ll">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginHorizontal="@dimen/dp_8"
+                android:layout_marginVertical="@dimen/dp_5"
+                android:text="@string/recent_visits_title"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp_6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginHorizontal="@dimen/dp_8"
+                android:text="查看全部"
+                android:textSize="@dimen/sp_6" />
+        </FrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recent_visits_item_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="4"
+            tools:listitem="@layout/client_info_recent_item_layout" />
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/bottom_space"
+        android:layout_width="@dimen/dp_8"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/today_appointments_ll"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:background="@drawable/bg_section_card1"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bottom_space"
+        app:layout_constraintTop_toTopOf="@id/recent_visits_ll">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginHorizontal="@dimen/dp_8"
+                android:layout_marginVertical="@dimen/dp_5"
+                android:text="@string/today_appointments_title"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp_6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginHorizontal="@dimen/dp_8"
+                android:text="查看全部"
+                android:textSize="@dimen/sp_6" />
+        </FrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/today_appointments_item_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="4"
+            tools:listitem="@layout/client_info_today_item_layout" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

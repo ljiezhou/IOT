@@ -1,10 +1,16 @@
 package com.android.newframework.ui
 
 import android.view.LayoutInflater
+import androidx.core.view.isVisible
 import com.android.newframework.AppState
+import com.android.newframework.R
 import com.android.newframework.databinding.ActivityMainBinding
-import com.android.newframework.ui.client.ClientActivity
+import com.android.newframework.ui.client.connect.ClientActivity
+import com.android.newframework.ui.client.info.InfoFragment
 import com.android.newframework.ui.host.HostActivity
+import com.android.newframework.widget.setInfo
+import com.android.newframework.widget.setSelectedState
+import com.blankj.utilcode.util.FragmentUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.iot.base.BaseActivity
 
@@ -16,22 +22,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initView() {
         super.initView()
-        binding.hostTv.isSelected = false
-        binding.clientTv.isSelected = false
-        binding.hostTv.setOnClickListener {
+        binding.hostTv.setSelectedState(false)
+        binding.hostTv.setInfo("主机", "创建连接")
+        binding.clientTv.setSelectedState(false)
+        binding.clientTv.setInfo("从机", "加入设备")
+
+        binding.hostTv.root.setOnClickListener {
             // 点击主机 -> 主机选中，从机取消
-            binding.hostTv.isSelected = true
-            binding.clientTv.isSelected = false
+            binding.hostTv.setSelectedState(true)
+            binding.clientTv.setSelectedState(false)
             AppState.isHost = true
         }
-        binding.clientTv.setOnClickListener {
+        binding.clientTv.root.setOnClickListener {
             // 点击从机 -> 从机选中，主机取消
-            binding.clientTv.isSelected = true
-            binding.hostTv.isSelected = false
+            binding.clientTv.setSelectedState(true)
+            binding.hostTv.setSelectedState(false)
             AppState.isHost = false
-//            if (AppState.isHost == false) {
-//                ClientActivity.action(this)
-//            }
         }
         binding.confirmTv.setOnClickListener {
             if (AppState.isHost == null) {
@@ -44,5 +50,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 ClientActivity.action(this)
             }
         }
+//        FragmentUtils.add(supportFragmentManager, InfoFragment(), R.id.container)
+        binding.container.isVisible = false
     }
 }

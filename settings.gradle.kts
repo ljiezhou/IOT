@@ -16,9 +16,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://www.jitpack.io") }
     }
 }
 
-rootProject.name = "IOT"
+rootProject.name = "svc.libs.774b"
+//rootProject.name = "IOT"
 include(":app")
 include(":base")

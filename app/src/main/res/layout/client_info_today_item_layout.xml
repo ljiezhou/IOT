@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_8"
+    android:layout_marginBottom="@dimen/dp_4"
+    android:background="@drawable/bg_section_card2">
+
+    <ImageView
+        android:id="@+id/head_iv"
+        android:layout_width="@dimen/dp_8"
+        android:layout_height="@dimen/dp_8"
+        android:layout_marginStart="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_5"
+        android:src="@drawable/baseline_person_outline_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_2"
+        android:text="张三"
+        android:textSize="@dimen/sp_6"
+        app:layout_constraintBottom_toBottomOf="@id/head_iv"
+        app:layout_constraintStart_toEndOf="@id/head_iv"
+        app:layout_constraintTop_toTopOf="@id/head_iv" />
+
+    <TextView
+        android:id="@+id/desc_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/name_tv"
+        app:layout_constraintStart_toEndOf="@id/name_tv"
+        app:layout_constraintTop_toTopOf="@id/name_tv" />
+
+    <View
+        android:id="@+id/line_view"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/color_divider"
+        app:layout_constraintTop_toBottomOf="@id/name_tv" />
+
+    <TextView
+        android:id="@+id/sure_tv"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_4"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginEnd="@dimen/dp_2"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:background="@drawable/btn_sure_bg"
+        android:gravity="center"
+        android:paddingVertical="@dimen/dp_4"
+        android:text="确定"
+        android:textColor="@color/color_text_title_dark"
+        android:textSize="@dimen/sp_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cancel_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_view" />
+
+    <TextView
+        android:id="@+id/cancel_tv"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_2"
+        android:layout_marginEnd="@dimen/dp_4"
+        android:background="@drawable/btn_cancel_bg"
+        android:gravity="center"
+        android:paddingVertical="@dimen/dp_4"
+        android:text="取消"
+        android:textColor="@color/color_text_title_light"
+        android:textSize="@dimen/sp_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sure_tv"
+        app:layout_constraintTop_toTopOf="@id/sure_tv" />
+</androidx.constraintlayout.widget.ConstraintLayout>
