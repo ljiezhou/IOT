@@ -70,12 +70,27 @@ class ClientDetailActivity : BaseActivity<ClientDetailActivityBinding>() {
                     }
 
                     Action.TEXT_MESSAGE -> {
-                        val payload = message.payload as TextMessagePayload
-                        if (StringUtils.getString(com.android.newframework.R.string.host_detail_btn_start) == payload.title) {
-                            FragmentUtils.add(supportFragmentManager, infoFragment, R.id.center_container)
-                            return
+                        try {
+                            // 把 payload 先转成 JSON，再反序列化为目标类型，避免 LinkedTreeMap 强转异常
+                            val payloadJson = GsonUtils.toJson(message.payload)
+                            val payload = GsonUtils.fromJson(payloadJson, TextMessagePayload::class.java)
+
+                            if (payload != null) {
+                                if (StringUtils.getString(com.android.newframework.R.string.host_detail_btn_start) == payload.title) {
+                                    FragmentUtils.add(supportFragmentManager, infoFragment, R.id.center_container)
+                                    return
+                                }
+                                infoFragment.updateText(payload.title)
+                            } else {
+                                // 兜底：如果 payload 本身就是目标类型，安全处理
+                                if (message.payload is TextMessagePayload) {
+                                    val p = message.payload as TextMessagePayload
+                                    infoFragment.updateText(p.title)
+                                }
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
                         }
-                        infoFragment.updateText(payload.title)
                     }
 
                     else -> {

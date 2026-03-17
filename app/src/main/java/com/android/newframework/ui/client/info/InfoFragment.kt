@@ -3,6 +3,8 @@ package com.android.newframework.ui.client.info
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.android.newframework.databinding.ClientInfoFragmentBinding
 import com.android.newframework.ui.client.info.adapter.QuickActionAdapter
 import com.android.newframework.ui.client.info.adapter.RecentInfoAdapter
@@ -36,11 +38,30 @@ class InfoFragment : BaseFragment<ClientInfoFragmentBinding>() {
 
         recentVisitsAdapter.animationEnable = true
         binding.recentVisitsItemRv.adapter = recentVisitsAdapter
+
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean = false
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.bindingAdapterPosition
+                recentVisitsAdapter.removeAt(position)
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(binding.recentVisitsItemRv)
         recentVisitsAdapter.setItemAnimation(BaseQuickAdapter.AnimationType.SlideInRight)
 
         todayAppointmentsAdapter.animationEnable = true
         binding.todayAppointmentsItemRv.adapter = todayAppointmentsAdapter
         todayAppointmentsAdapter.setItemAnimation(BaseQuickAdapter.AnimationType.SlideInRight)
+        val itemTouchHelper2 = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean = false
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.bindingAdapterPosition
+                todayAppointmentsAdapter.removeAt(position)
+            }
+        })
+        itemTouchHelper2.attachToRecyclerView(binding.todayAppointmentsItemRv)
     }
 
     override fun initObserver() {
@@ -62,6 +83,24 @@ class InfoFragment : BaseFragment<ClientInfoFragmentBinding>() {
     override fun initData() {
         super.initData()
         viewModel.updateTopInfo()
+    }
+
+    override fun initListener() {
+        super.initListener()
+        quickActionAdapter.setOnItemClickListener { adapter, view, i ->
+            val item = quickActionAdapter.getItem(i)
+            when (item.title) {
+                "新增患者" -> {
+                    recentVisitsAdapter.add(0, viewModel.getSampleRecentVisitsSets())
+                    binding.recentVisitsItemRv.scrollToPosition(0)
+                }
+
+                "预约挂号" -> {
+                    todayAppointmentsAdapter.add(0, viewModel.getSampleTodayAppointmentsSets())
+                    binding.todayAppointmentsItemRv.scrollToPosition(0)
+                }
+            }
+        }
     }
 
     fun updateText(title: String) {

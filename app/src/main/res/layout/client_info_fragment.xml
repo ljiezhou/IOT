@@ -46,6 +46,7 @@
         android:layout_height="@dimen/dp_0"
         android:layout_marginHorizontal="@dimen/dp_8"
         android:layout_marginTop="@dimen/dp_10"
+        android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintHeight_percent="0.12"
         app:layout_constraintTop_toBottomOf="@id/top_fl"
@@ -80,6 +81,7 @@
             android:layout_marginHorizontal="@dimen/dp_8"
             android:layout_marginVertical="@dimen/dp_5"
             android:layout_weight="1"
+            android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="6"
             tools:itemCount="6"
@@ -125,6 +127,7 @@
             android:id="@+id/recent_visits_item_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="4"
             tools:listitem="@layout/client_info_recent_item_layout" />
@@ -178,6 +181,7 @@
             android:id="@+id/today_appointments_item_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="4"
             tools:listitem="@layout/client_info_today_item_layout" />
