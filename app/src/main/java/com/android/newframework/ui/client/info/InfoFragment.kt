@@ -32,7 +32,9 @@ class InfoFragment : BaseFragment<ClientInfoFragmentBinding>() {
         binding.logoIv.setImageResource(com.android.newframework.R.drawable.baseline_medical_services_24)
         binding.topTotalInfoRv.addItemDecoration(GridSpacingDecoration(4, requireContext().resources.getDimension(R.dimen.dp_5).toInt(), false))
         binding.topTotalInfoRv.adapter = topInfoAdapter
+        topInfoAdapter.animationEnable = true
 
+        quickActionAdapter.animationEnable =true
         binding.quickActionsRv.addItemDecoration(GridSpacingDecoration(6, requireContext().resources.getDimension(R.dimen.dp_5).toInt(), false))
         binding.quickActionsRv.adapter = quickActionAdapter
 
@@ -106,6 +108,8 @@ class InfoFragment : BaseFragment<ClientInfoFragmentBinding>() {
     fun updateText(title: String) {
         when (title) {
             StringUtils.getString(com.android.newframework.R.string.host_detail_btn_refresh) -> {
+                viewModel.updateTopInfo()
+                viewModel.updateQuickInfo()
                 viewModel.updateRecentVisitsInfo()
                 viewModel.updateTodayAppointmentsInfo()
             }
