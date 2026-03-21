@@ -12,5 +12,7 @@
     <string name="host_detail_btn_remove_patient">删除预约患者</string>
     <string name="host_detail_btn_add_recent">新增就诊患者</string>
     <string name="host_detail_btn_remove_recent">删除就诊患者</string>
+    <string name="host_detail_btn_full_screen">进入全屏</string>
+    <string name="host_detail_btn_full_screen_exit">退出全屏</string>
 
 </resources>

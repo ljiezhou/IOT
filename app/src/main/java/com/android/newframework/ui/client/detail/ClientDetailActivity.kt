@@ -3,6 +3,8 @@ package com.android.newframework.ui.client.detail
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.lifecycleScope
 import com.android.newframework.R
 import com.android.newframework.databinding.ClientDetailActivityBinding
@@ -81,6 +83,15 @@ class ClientDetailActivity : BaseActivity<ClientDetailActivityBinding>() {
                                     return
                                 }
                                 infoFragment.updateText(payload.title)
+                                when (payload.title) {
+                                    StringUtils.getString(R.string.host_detail_btn_full_screen_exit) -> {
+                                        restoreCenterDefault()
+                                    }
+
+                                    StringUtils.getString(R.string.host_detail_btn_refresh) -> {
+                                        setCenterFullScreen()
+                                    }
+                                }
                             } else {
                                 // 兜底：如果 payload 本身就是目标类型，安全处理
                                 if (message.payload is TextMessagePayload) {
@@ -101,6 +112,50 @@ class ClientDetailActivity : BaseActivity<ClientDetailActivityBinding>() {
 
             else -> {}
         }
+    }
+
+
+    private fun setCenterFullScreen() {
+        val constraintLayout = binding.root
+
+        // 隐藏左侧
+        binding.leftInfoLl.visibility = View.GONE
+
+        val set = ConstraintSet()
+        set.clone(constraintLayout)
+
+        // 让 center_container 贴满父布局
+        set.clear(R.id.center_container, ConstraintSet.START)
+        set.connect(
+            R.id.center_container,
+            ConstraintSet.START,
+            ConstraintSet.PARENT_ID,
+            ConstraintSet.START
+        )
+
+        set.applyTo(constraintLayout)
+    }
+
+
+    private fun restoreCenterDefault() {
+        val constraintLayout = binding.root
+
+        // 显示左侧
+        binding.leftInfoLl.visibility = View.VISIBLE
+
+        val set = ConstraintSet()
+        set.clone(constraintLayout)
+
+        // 恢复原始约束（连接到左侧）
+        set.clear(R.id.center_container, ConstraintSet.START)
+        set.connect(
+            R.id.center_container,
+            ConstraintSet.START,
+            R.id.left_info_ll,
+            ConstraintSet.END
+        )
+
+        set.applyTo(constraintLayout)
     }
 
     companion object {

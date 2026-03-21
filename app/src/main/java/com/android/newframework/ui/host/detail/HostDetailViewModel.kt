@@ -17,6 +17,8 @@ class HostDetailViewModel : BaseViewModel() {
             CommonInfoItem(title = StringUtils.getString(R.string.host_detail_btn_remove_patient)),
             CommonInfoItem(title = StringUtils.getString(R.string.host_detail_btn_add_recent)),
             CommonInfoItem(title = StringUtils.getString(R.string.host_detail_btn_remove_recent)),
+            CommonInfoItem(title = StringUtils.getString(R.string.host_detail_btn_full_screen)),
+            CommonInfoItem(title = StringUtils.getString(R.string.host_detail_btn_full_screen_exit)),
         )
         btnItems.value = items
     }
