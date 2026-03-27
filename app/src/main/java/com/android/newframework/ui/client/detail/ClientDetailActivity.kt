@@ -59,7 +59,7 @@ class ClientDetailActivity : BaseActivity<ClientDetailActivityBinding>() {
                     Action.ANIMATION_START -> {
 //                        binding.deviceStateTv.text = "Start"
 //                        binding.loadingView.startWaiting()
-//                        FragmentUtils.add(supportFragmentManager, infoFragment, R.id.center_container)
+                        FragmentUtils.add(supportFragmentManager, infoFragment, R.id.center_container)
                     }
 
                     Action.ANIMATION_STOP -> {
